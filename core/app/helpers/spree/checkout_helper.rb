@@ -38,6 +38,10 @@ module Spree
       content_tag('ol', raw(items.join("\n")), :class => 'progress-steps', :id => "checkout-step-#{@order.state}")
     end
 
+    def default_country_option_value
+      Spree::Country.find_by_iso(Spree::Config['default_locale'].upcase).id
+    end
+
     private
     def state_required?
       Spree::Config[:address_requires_state]

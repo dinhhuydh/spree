@@ -34,7 +34,7 @@
       <p class="field" id="bcountry">
         <%= bill_form.label :country_id, t(:country) %><span class="required">*</span><br />
         <span id="bcountry">
-          <%= bill_form.collection_select :country_id, available_countries, :id, :name, {}, {:class => 'required'} %>
+          <%= bill_form.collection_select :country_id, available_countries, :id, :name, {selected: default_country_option_value}, {:class => 'required'} %>
         </span>
       </p>
 
@@ -122,7 +122,7 @@
       <p class="field" id="scountry">
         <%= ship_form.label :country_id, t(:country) %><span class="required">*</span><br />
         <span id="scountry">
-          <%= ship_form.collection_select :country_id, available_countries, :id, :name, {}, {:class => 'required'} %>
+          <%= ship_form.collection_select :country_id, available_countries, :id, :name, {selected: default_country_option_value}, {:class => 'required'} %>
         </span>
       </p>
 
