@@ -5,7 +5,7 @@ module Spree
 
     has_many :shipments
 
-    validates :firstname, :lastname, :address1, :city, :zipcode, :country, :phone, :presence => true
+    validates :firstname, :lastname, :address1, :city, :country, :phone, :presence => true
     validate :state_validate
 
     attr_accessible :firstname, :lastname, :address1, :address2,
