@@ -38,35 +38,6 @@
         </span>
       </p>
 
-      <p class="field" id="bstate">
-        <% have_states = !@order.bill_address.country.states.empty? %>
-
-        <%= bill_form.label :state, t(:state) %><%= state_required_label %><br />
-
-        <% state_elements = [
-           bill_form.collection_select(:state_id, @order.bill_address.country.states,
-                              :id, :name,
-                              {:include_blank => true},
-                              {:class => have_states ? state_required_class : 'hidden',
-                              :disabled => !have_states}) +
-           bill_form.text_field(:state_name,
-                              :class => !have_states ? state_required_class : 'hidden',
-                              :disabled => have_states)
-           ].join.gsub('"', "'").gsub("\n", "")
-        %>
-        <%= javascript_tag do -%>
-          document.write("<%== state_elements %>");
-        <% end -%>
-      </p>
-
-      <noscript>
-        <%= bill_form.text_field :state_name, :class => state_required_class %>
-      </noscript>
-
-      <p class="field" id="bzipcode">
-        <%= bill_form.label :zipcode, t(:zip) %><span class="required">*</span><br />
-        <%= bill_form.text_field :zipcode, :class => 'required' %>
-      </p>
       <p class="field" id="bphone">
         <%= bill_form.label :phone, t(:phone) %><span class="required">*</span><br />
         <%= bill_form.phone_field :phone, :class => 'required' %>
@@ -126,33 +97,6 @@
         </span>
       </p>
 
-      <p class="field" id="sstate">
-        <% have_states = !@order.ship_address.country.states.empty? %>
-        <%= ship_form.label :state, t(:state) %><%= state_required_label %><br />
-        <% state_elements = [
-           ship_form.collection_select(:state_id, @order.ship_address.country.states,
-                              :id, :name,
-                              {:include_blank => true},
-                              {:class => have_states ? state_required_class : 'hidden',
-                              :disabled => !have_states}) +
-           ship_form.text_field(:state_name,
-                              :class => !have_states ? state_required_class : 'hidden',
-                              :disabled => have_states)
-           ].join.gsub('"', "'").gsub("\n", "")
-        %>
-        <%= javascript_tag do -%>
-          document.write("<%== state_elements %>");
-        <% end %>
-      </p>
-
-      <noscript>
-        <%= ship_form.text_field :state_name, :class => state_required_class %>
-      </noscript>
-
-      <p class="field" id="szipcode">
-        <%= ship_form.label :zipcode, t(:zip) %><span class="required">*</span><br />
-        <%= ship_form.text_field :zipcode, :class => 'required' %>
-      </p>
       <p class="field" id="sphone">
         <%= ship_form.label :phone, t(:phone) %><span class="required">*</span><br />
         <%= ship_form.phone_field :phone, :class => 'required' %>
